@@ -17,8 +17,8 @@ class Event extends Component {
       <div className='Event'>
         <div className='collapsed-event'>
           <h2 className='event-summary'>{event.summary}</h2>
-          <span className='event-start'>{`${event.start.dateTime} (${event.start.timeZone})`}</span>
-          <span className='event-location'>{`@${event.summary} | ${event.location}`}</span>
+          <span className='event-start'>{`${event.start.dateTime} (${event.start.timeZone})`}</span><br/>
+          <span className='event-location'>{`@${event.summary} | ${event.location}`}</span><br/>
           <button className='event-button' onClick={this.toggleCollapsed}>
             {isCollapsed ? 'Show details' : 'Hide details'}
           </button>
