@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-
 class Event extends Component {
-
   state = { isCollapsed: true };
 
   toggleCollapsed = () => {
@@ -15,23 +13,28 @@ class Event extends Component {
 
     return (
       <div className='Event'>
-        <div className='collapsed-event'>
-          <h2 className='event-summary'>{event.summary}</h2>
-          <span className='event-start'>{`${event.start.dateTime} (${event.start.timeZone})`}</span><br/>
-          <span className='event-location'>{`@${event.summary} | ${event.location}`}</span><br/>
-          <button className='event-button' onClick={this.toggleCollapsed}>
-            {isCollapsed ? 'Show details' : 'Hide details'}
-          </button>
-        </div>
+        {/* <div className='collapsed-event'> */}
+        <h2 className='event-summary'>{event.summary}</h2>
+        <span className='event-start'>{`${event.start.dateTime} (${event.start.timeZone})`}</span>
+        <br />
+        <span className='event-location'>{`@${event.summary} | ${event.location}`}</span>
+        <br />
+        {/* </div> */}
         {!isCollapsed && (
           <div className='event-details'>
-            <h4 className='about-event'>About event:</h4>
-            <link className='google-calendar-link' href=''>
-              See details on Google Calendar
-            </link>
+            <h3 className='about-event'>About event:</h3>
+            <h3>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a className='google-calendar-link' href='#'> 
+                See details on Google Calendar
+              </a>
+            </h3>
             <span className='event-description'>{event.description}</span>
           </div>
         )}
+        <button className='event-button' onClick={this.toggleCollapsed}>
+          {isCollapsed ? 'Show details' : 'Hide details'}
+        </button>
       </div>
     );
   }
