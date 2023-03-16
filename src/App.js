@@ -45,7 +45,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <span>Choose your nearest city:</span>
+        <span className='city-search-text'>Choose your nearest city:</span>
         <br />
         <CitySearch
           locations={this.state.locations}
