@@ -2,7 +2,7 @@
 
 .App {
   text-align: center;
-  padding: 2% 5%;
+  padding: 5% 5%;
 }
 
 .App * {
@@ -15,7 +15,7 @@ ul {
 }
 
 p {
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .display-none {
@@ -35,9 +35,13 @@ input[type="number"] {
   font-size: 18px;
   line-height: 20px;
   align-self: center;
-  height: 45px;
-  margin-top: 15px;
-  margin-bottom: 25px;
+  height: 42px;
+  margin-top: 5px;
+  margin-bottom:30px;
+}
+
+input[type="text"] {
+  margin-bottom: -8px;
 }
 
 span {
@@ -66,11 +70,11 @@ span {
 
 .suggestions {
   width: 250px;
-  position: absolute;
-  z-index: 2;
+  /* position: absolute; */
+  /* z-index: 2; */
   align-self: center;
   margin: 0;
-  top: 52px;
+  top: 0px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
@@ -152,17 +156,16 @@ span {
   text-align: center;
 }
 
+div.NumberOfEvents {
+  padding-top: 40px;
+}
+
 .button-wrapper {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
   padding: 20px;
   font-family: sans-serif;
-}
-
-.Alert {
-  position: fixed;
-  top: 20px;
 }
 
 .data-vis-wrapper {
