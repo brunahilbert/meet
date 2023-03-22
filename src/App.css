@@ -2,7 +2,7 @@
 
 .App {
   text-align: center;
-  padding: 5% 5%;
+  padding: 2% 5%;
 }
 
 .App * {
@@ -42,6 +42,12 @@ input[type="number"] {
 
 input[type="text"] {
   margin-bottom: -8px;
+}
+
+.meet-logo {
+  width: 100%;
+  max-width: 230px;
+  height: auto;
 }
 
 span {

@@ -5,6 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
+import MeetAppLogo from './img/meet-logo.png'
 
 class App extends Component {
   
@@ -45,6 +46,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
+        <img className='meet-logo' src={MeetAppLogo} alt='Meet app logo'/> <br/>
         <span className='city-search-text'>Choose your nearest city:</span>
         <CitySearch
           locations={this.state.locations}
