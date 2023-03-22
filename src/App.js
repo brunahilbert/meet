@@ -9,10 +9,13 @@ import MeetAppLogo from './img/meet-logo.png';
 import { WarnAlert } from './Alert';
 
 class App extends Component {
+
   state = { events: [], locations: [], eventsNumber: 32 };
 
   componentDidMount() {
     this.mounted = true;
+    window.addEventListener('offline', this.handleOffline);
+    window.addEventListener('online', this.handleOnline);
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({
@@ -43,10 +46,20 @@ class App extends Component {
     this.setState({ eventsNumber: inputNumber });
   };
 
+  handleOffline = () => {
+    this.setState({ offline: true });
+  };
+
+  handleOnline = () => {
+    this.setState({ offline: false });
+  };
+
   render() {
-    const offlineMessage = navigator.online
+
+    const offlineMessage = window.navigator.onLine
       ? ''
-      : 'You are currently offline, no new data can be displayed';
+      : 'You are currently offline. The events may not be up to date';
+
     return (
       <div className='App'>
         <img className='meet-logo' src={MeetAppLogo} alt='Meet app logo' />{' '}
