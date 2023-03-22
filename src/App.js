@@ -5,10 +5,10 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
-import MeetAppLogo from './img/meet-logo.png'
+import MeetAppLogo from './img/meet-logo.png';
+import { WarnAlert } from './Alert';
 
 class App extends Component {
-  
   state = { events: [], locations: [], eventsNumber: 32 };
 
   componentDidMount() {
@@ -44,9 +44,13 @@ class App extends Component {
   };
 
   render() {
+    const offlineMessage = navigator.online
+      ? ''
+      : 'You are currently offline, no new data can be displayed';
     return (
       <div className='App'>
-        <img className='meet-logo' src={MeetAppLogo} alt='Meet app logo'/> <br/>
+        <img className='meet-logo' src={MeetAppLogo} alt='Meet app logo' />{' '}
+        <br />
         <span className='city-search-text'>Choose your nearest city:</span>
         <CitySearch
           locations={this.state.locations}
@@ -56,6 +60,7 @@ class App extends Component {
           updateEventsNumber={this.updateEventsNumber}
           eventsNumber={this.state.eventsNumber}
         />
+        <WarnAlert text={offlineMessage} />
         <EventList
           events={this.state.events.slice(0, this.state.eventsNumber)}
         />
