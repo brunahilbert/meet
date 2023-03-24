@@ -24,8 +24,7 @@ class Event extends Component {
           <div className='event-details'>
             <h3 className='about-event'>About event:</h3>
             <h3>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a className='google-calendar-link' href='#'> 
+              <a className='google-calendar-link' href={event.htmlLink}> 
                 See details on Google Calendar
               </a>
             </h3>
