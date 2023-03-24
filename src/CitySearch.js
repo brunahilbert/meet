@@ -18,7 +18,7 @@ class CitySearch extends Component {
       this.setState({
         query: value,
         infoText:
-          'Cannot find that city. Please try again.',
+          'City not found. Please try again.',
       });
     } else {
       return this.setState({
