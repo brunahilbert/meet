@@ -8,8 +8,20 @@ import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import MeetAppLogo from './img/meet-logo.png';
 import { WarnAlert } from './Alert';
 import WelcomeScreen from './WelcomeScreen';
+import EventGenre from './EventGenre';
+import {
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from 'recharts';
 
 class App extends Component {
+  
   state = {
     events: [],
     locations: [],
@@ -60,6 +72,18 @@ class App extends Component {
     this.setState({ eventsNumber: inputNumber });
   };
 
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter(
+        (event) => event.location === location
+      ).length;
+      const city = location.split(', ').shift();
+      return { city, number };
+    });
+    return data;
+  };
+
   handleOffline = () => {
     this.setState({ offline: true });
   };
@@ -71,7 +95,7 @@ class App extends Component {
   render() {
     const offlineMessage = window.navigator.onLine
       ? ''
-      : 'You are currently offline. The events may not be up to date';
+      : 'You are currently offline. The events may not be up to date.';
 
     return (
       <div className='App'>
@@ -87,6 +111,35 @@ class App extends Component {
           eventsNumber={this.state.eventsNumber}
         />
         <WarnAlert text={offlineMessage} />
+        <div className='data-vis-wrapper'>
+          <EventGenre events={this.state.events} />
+          <ResponsiveContainer height={400}>
+            <ScatterChart
+              margin={{
+                top: 30,
+                right: 30,
+                bottom: 30,
+                left: 0,
+              }}
+            >
+              <CartesianGrid />
+              <XAxis type='category' dataKey='city' name='City' />
+              <YAxis
+                type='number'
+                dataKey='number'
+                name='Number of events'
+                allowDecimals={false}
+              />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <Scatter
+                data={this.getData()}
+                fill='#FF5A5A'
+                name='Number of events per city'
+              />
+              <Legend verticalAlign='bottom' height={50} />
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
         <EventList
           events={this.state.events.slice(0, this.state.eventsNumber)}
         />
