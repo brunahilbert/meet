@@ -12,6 +12,8 @@ The objective of this project is to build a serverless, progressive web applicat
 - Add an app shortcut to the home screen.
 - View a chart showing the number of upcoming events by city.
 
+Deploy app link:  [https://brunahilbert.github.io/meet/](https://brunahilbert.github.io/meet/)
+
 ### User Stories and Scenarios
 
     FEATURE 1: FILTER EVENTS BY CITY
